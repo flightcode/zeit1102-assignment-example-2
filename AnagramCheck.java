@@ -17,14 +17,17 @@ public class AnagramCheck {
         System.out.print("Enter second word: "); // Prompt user input
         String str2 = sc.nextLine(); // Get user input
         sc.close();
+        Anagram testAnagram = new Anagram(str1, str2);
 
         try {
             if (areAnagram(str1, str2)) { // Call check function
                 System.out.println("The two words are anagrams of each other"); // If anagrams
+                testAnagram.setResult(true);
             } else {
                 System.out.println("The two words are not anagrams of each other"); // If not anagrams
+                testAnagram.setResult(false);
             }
-            arrSave.add(str1 + "; " + str2); // Write attempt to array
+            arrSave.add(testAnagram.toString()); // Write attempt to array
             files.Write(arrSave); // Write array to save file
         } catch (Exception e) { // If error
             System.out.println("Words must not be empty");
