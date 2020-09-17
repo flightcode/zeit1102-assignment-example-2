@@ -1,8 +1,8 @@
 import java.io.*;
 import java.util.*;
 
-public class AnagramFile {
-    public void Write(ArrayList<String> data) throws Exception {
+public class AnagramFile { // Manage save file
+    public void Write(ArrayList<String> data) throws Exception { // Write new comparisons to file
         BufferedWriter file = new BufferedWriter(new FileWriter("save.txt")); // Create file save.txt
         for (int i = 0; i < data.size(); i++) { // Iterate every element in Array List (Lines)
             file.write(data.get(i)); // Add line to file
@@ -11,7 +11,7 @@ public class AnagramFile {
         file.close();
     }
 
-    public ArrayList<String> Read() throws Exception {
+    public ArrayList<String> Read() throws Exception { // Read save file on load
         ArrayList<String> lines = new ArrayList<String>(); // Array List where every element is a line
 
         File file = new File("save.txt"); // Read file save.txt

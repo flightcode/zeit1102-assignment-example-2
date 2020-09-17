@@ -1,10 +1,10 @@
 import java.util.*;
 
-public class AnagramCheck {
+public class AnagramCheck { // Main class, runs method to check if strings are anagrams
     static AnagramFile files = new AnagramFile(); // Get files class
     static ArrayList<String> arrSave = new ArrayList<String>(); // Make array of past strings
 
-    public static void main(String args[]) {
+    public static void main(String args[]) { // Prompt user for strings and check if anagram
         try {
             arrSave = files.Read(); // Read save file and write to array
         } catch (Exception e) { // If error
@@ -35,7 +35,7 @@ public class AnagramCheck {
         }
     }
 
-    static boolean areAnagram(String str1, String str2) throws Exception {
+    static boolean areAnagram(String str1, String str2) throws Exception { // Check if anagram
         if (str1.isEmpty() || str2.isEmpty()) { // Check if either strings empty
             throw new Exception("Inputs must not be empty");
         }
