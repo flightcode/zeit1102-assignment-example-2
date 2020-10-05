@@ -12,32 +12,33 @@ public class AnagramCheck { // Main class, runs method to check if strings are a
             e.printStackTrace();
         }
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter first word: "); // Prompt user input
-        String str1 = sc.nextLine(); // Get user input
-        System.out.print("Enter second word: "); // Prompt user input
-        String str2 = sc.nextLine(); // Get user input
-        sc.close();
-        Anagram testAnagram = new Anagram(str1, str2);
+        do {
+            System.out.print("Enter first word: "); // Prompt user input
+            String str1 = sc.nextLine(); // Get user input
+            System.out.print("Enter second word: "); // Prompt user input
+            String str2 = sc.nextLine(); // Get user input
+            Anagram testAnagram = new Anagram(str1, str2);
 
-        try {
-            if (areAnagram(str1, str2)) { // Call check function
-                System.out.println("The two words are anagrams of each other"); // If anagrams
-                testAnagram.setResult(true);
-            } else {
-                System.out.println("The two words are not anagrams of each other"); // If not anagrams
-                testAnagram.setResult(false);
+            try {
+                if (areAnagram(str1, str2)) { // Call check function
+                    System.out.println("The two words are anagrams of each other"); // If anagrams
+                    testAnagram.setResult(true);
+                } else {
+                    System.out.println("The two words are not anagrams of each other"); // If not anagrams
+                    testAnagram.setResult(false);
+                }
+                arrSave.add(testAnagram.toString()); // Write attempt to array
+                files.Write(arrSave); // Write array to save file
+            } catch (Exception e) { // If error
+                System.out.println(e);
             }
-            arrSave.add(testAnagram.toString()); // Write attempt to array
-            files.Write(arrSave); // Write array to save file
-        } catch (Exception e) { // If error
-            System.out.println("Words must not be empty");
-            e.printStackTrace();
-        }
+            System.out.println("---");
+        } while(true);
     }
 
     static boolean areAnagram(String str1, String str2) throws Exception { // Check if anagram
         if (str1.isEmpty() || str2.isEmpty()) { // Check if either strings empty
-            throw new Exception("Inputs must not be empty");
+            throw new EmptyInputException("Inputs must not be empty");
         }
 
         char arr1[] = str1.toCharArray(); // Convert strings to character arrays
